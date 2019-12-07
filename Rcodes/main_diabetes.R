@@ -19,11 +19,10 @@ splits[[2]][,9]<- as.factor(splits[[2]][,9]) # assign the response column of the
 
 classificador <- h2o.deeplearning(x=1:8,
                                    y=9,
-                                   activation="RectifierWithDropout",
+                                 activation="Tanh",
                                    training_frame = splits[[1]], 
-                                   hidden=c(10), 
-                                   nfolds = 5, keep_cross_validation_models = TRUE,
-                                   seed = 25,learn_rate = .01,
+                                   hidden=c(10),
+                                   rate = 0.5,adaptive_rate = FALSE,
                                    epochs=500,
                                    input_dropout_ratio=0.1 )
 
